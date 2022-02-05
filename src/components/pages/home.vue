@@ -8,7 +8,7 @@
                     <span class="typed-text">{{ typeValue }}</span>
                     <span class="cursor" :class="{'typing': typeStatus}">&nbsp;</span>
                 </div>
-                <div class="sub">Junior programer web dengan pelamanan kurang lebih 1 tahun</div>
+                <div class="sub">Junior programer web dengan pengalaman kurang lebih 1 tahun</div>
                 <div class="menu-btn">
                     <button class="btnContact" v-ripple>#TanyaDulu</button>
                     <a href="#" class="btnSosmed"><ion-icon name="logo-facebook" id="fb"></ion-icon></a>
