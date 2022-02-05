@@ -20,6 +20,9 @@
                     <div class="item-box" :id="pointer == 3 ? 'pointer' : ' '" @click="onPointer(3, 'data3')" v-ripple>
                         <img src="~@/assets/img/mfstore.png" :id="pointer == 3 ? 'pointer' : ' '"/>
                     </div>
+                    <div class="item-box" :id="pointer == 4 ? 'pointer' : ' '" @click="onPointer(4, 'data4')" v-ripple>
+                        <img src="~@/assets/img/majorhs.svg" :id="pointer == 4 ? 'pointer' : ' '"/>
+                    </div>
                 </div>
             </div>
             <div class="right">
@@ -70,6 +73,14 @@
                                <br>Framework: Nuxt JS
                                <br>Status: <span style="color: var(--yellow)">Dalam tahap development</span>`,
                         link: 'http://mfstore.herokuapp.com/'
+                    },
+                    data4: {
+                        title: 'Major Home Suites',
+                        text: `Major Home Suites adalah sebuah website landing page dengan tema Perumahan
+                               <br>
+                               <br>Framework: Nuxt JS
+                               <br>Status: <span style="color: var(--yellow)">Dalam tahap development</span>`,
+                        link: 'http://majorhs.wildan.host/'
                     }
                 }
             }
