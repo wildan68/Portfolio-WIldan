@@ -4,26 +4,30 @@
             Portofolio
             <hr />
         </div>
+        Geser untuk slide
         <div class="content">
             <div class="left">
                 <h3>Perusahaan</h3>
-                <div class="content-box">
-                    <div class="item-box" :id="pointer == 1 ? 'pointer' : ' '" @click="onPointer(1, 'data1')" v-ripple>
+                <Swiper class="content-box" :slidesPerView="isMobile ? 3 : 4" :spaceBetween="isMobile ? 10 : 30">
+                    <SwiperSlide class="item-box" :id="pointer == 1 ? 'pointer' : ' '" @click="onPointer(1, 'data1')" v-ripple>
                         <img src="~@/assets/img/beenews.png" :id="pointer == 1 ? 'pointer' : ' '"/>
-                    </div>
-                </div>
+                    </SwiperSlide>
+                </Swiper>
                 <h3>Project Saya</h3>
-                <div class="content-box">
-                    <div class="item-box" :id="pointer == 2 ? 'pointer' : ' '" @click="onPointer(2, 'data2')" v-ripple>
+                <swiper class="swiper content-box" :slidesPerView="isMobile ? 3 : 3" :spaceBetween="isMobile ? 10 : 30">
+                    <swiper-slide class="item-box" :id="pointer == 2 ? 'pointer' : ' '" @click="onPointer(2, 'data2')" v-ripple>
                         <img src="~@/assets/img/weather.png" :id="pointer == 2 ? 'pointer' : ' '"/>
-                    </div>
-                    <div class="item-box" :id="pointer == 3 ? 'pointer' : ' '" @click="onPointer(3, 'data3')" v-ripple>
+                    </swiper-slide>
+                    <swiper-slide class="item-box" :id="pointer == 3 ? 'pointer' : ' '" @click="onPointer(3, 'data3')" v-ripple>
                         <img src="~@/assets/img/mfstore.png" :id="pointer == 3 ? 'pointer' : ' '"/>
-                    </div>
-                    <div class="item-box" :id="pointer == 4 ? 'pointer' : ' '" @click="onPointer(4, 'data4')" v-ripple>
+                    </swiper-slide>
+                    <swiper-slide class="item-box" :id="pointer == 4 ? 'pointer' : ' '" @click="onPointer(4, 'data4')" v-ripple>
                         <img src="~@/assets/img/majorhs.svg" :id="pointer == 4 ? 'pointer' : ' '"/>
-                    </div>
-                </div>
+                    </swiper-slide>
+                    <swiper-slide class="item-box" :id="pointer == 5 ? 'pointer' : ' '" @click="onPointer(5, 'data5')" v-ripple>
+                        <img src="~@/assets/img/autodrone.jpg" :id="pointer == 5 ? 'pointer' : ' '"/>
+                    </swiper-slide>
+                </swiper>
             </div>
             <div class="right">
                 <div v-for="(key, d) in data" :key="d">
@@ -42,13 +46,35 @@
 
 <script>
     import aos from 'aos'
+    import { Swiper, SwiperSlide } from 'swiper/vue'
+
+    import 'swiper/swiper-bundle.min.css'
+
+    import "swiper/components/navigation"
+    import "swiper/components/pagination"
+
+    import SwiperCore, {
+        Navigation,
+        Pagination,
+        Mousewheel,
+        Keyboard,
+        Autoplay,
+    } from 'swiper/core';
+
+    SwiperCore.use([Autoplay, Navigation, Pagination, Mousewheel, Keyboard]);
+
     export default {
         name: 'Portofolio Pages',
         title: 'Portofolio | Wildan Rizky',
+        components: {
+            Swiper,
+            SwiperSlide,
+        },
         data() {
             return {
                 pointer: 1,
                 keys: 'data1',
+                isMobile: false,
                 data: {
                     data1: {
                         title: 'BEENEWS.ID',
@@ -81,6 +107,14 @@
                                <br>Framework: Nuxt JS
                                <br>Status: <span style="color: var(--yellow)">Dalam tahap development</span>`,
                         link: 'http://majorhs.wildan.host/'
+                    },
+                    data5: {
+                        title: 'Autodrone Store',
+                        text: `Autodrone sebuah landing page Drone Store sederhana
+                               <br>
+                               <br>Framework: Nuxt JS & Next JS (http://autodrone.wildan.host)
+                               <br>Status: <span style="color: var(--green)">Selesai</span>`,
+                        link: 'http://autodrone-nuxt.wildan.host/'
                     }
                 }
             }
@@ -93,6 +127,9 @@
         },
         mounted() {
             aos.init()
+            if (window.innerWidth <= 768) {
+                this.isMobile = true 
+            }
         }
     }
 </script>
@@ -134,6 +171,8 @@
     
     .portofolio .content .left {
         flex: 1;
+        width: 30em;
+        padding: 0 1em 0 1em;
     }
     
     .portofolio .content .right {
@@ -149,15 +188,11 @@
     
     .portofolio .content .left .content-box {
         display: flex;
-        flex-wrap: wrap;
-    }
-    
-    .portofolio .content .left .content-box>div {
-        margin-right: 1%;
+        overflow: hidden;
+        width: auto;
     }
     
     .portofolio .content .left .content-box .item-box {
-        width: 10em;
         height: 10em;
         background-color: #f9f9f950;
         display: flex;
@@ -214,8 +249,10 @@
         .portofolio .content>div {
             margin-bottom: 5%;
         }
+        .portofolio .content .left {
+            width: auto;
+        }
         .portofolio .content .left .content-box .item-box {
-            width: 5em;
             height: 5em;
         }
         .portofolio .content .right a.btn-visit {
