@@ -41,7 +41,7 @@
         title: 'Tentang | Wildan Rizky',
         methods: {
             onCV() {
-                window.open('https://s3-ap-southeast-1.amazonaws.com/glints-dashboard/resume/847140afb3297feaee126b353a63aaf4.pdf', '_blank')
+                window.open('https://s3-ap-southeast-1.amazonaws.com/glints-dashboard/resume/f0e9fe24e8984ffee384985ca7fe30ee.pdf', '_blank')
             },
             onGithub() {
                 window.open('https://github.com/wildan68', '_blank')
